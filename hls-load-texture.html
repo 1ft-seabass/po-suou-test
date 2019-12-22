@@ -1,0 +1,34 @@
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+
+<body>
+
+  <a-scene embedded style="height: 300px;width: 600px;" start>
+    <a-assets>
+      <video id="base_video" autoplay="true" loop="true">
+    </a-assets>
+    
+    <a-entity geometry="primitive: box" material="src: #base_video" position="0 0.5 -2" rotation="0 45 0"></a-entity>
+    <a-sky color="#ECECEC"></a-sky>
+    <camera wasd-controls position="0 1.6 0"></camera>
+  </a-scene>
+
+  <script>
+    var video = document.getElementById('base_video');
+    if (Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource('https://app-1ft-video-server.herokuapp.com/output.m3u8');
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        video.play();
+      });
+    }
+  </script>
+
+</body>
+
+</html>
