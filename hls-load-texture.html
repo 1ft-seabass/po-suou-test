@@ -7,12 +7,12 @@
 
 <body>
 
-  <a-scene embedded style="height: 300px;width: 600px;" start>
+  <a-scene>
     <a-assets>
       <video id="base_video" autoplay="true" loop="true">
     </a-assets>
     
-    <a-entity geometry="primitive: box" material="src: #base_video" position="0 0.5 -2" rotation="0 45 0"></a-entity>
+    <a-entity geometry="primitive: box" material="src: #base_video" position="0 1 -2" rotation="0 45 0"></a-entity>
     <a-sky color="#ECECEC"></a-sky>
     <camera wasd-controls position="0 1.6 0"></camera>
   </a-scene>
